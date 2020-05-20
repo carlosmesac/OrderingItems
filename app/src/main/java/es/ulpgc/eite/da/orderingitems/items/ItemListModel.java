@@ -46,6 +46,9 @@ public class ItemListModel implements ItemListContract.Model {
   @Override
   public void onAddNewData() {
     //TODO: falta implementacion
+    ItemData item = new ItemData(letters[getStoredIndex()],getStoredIndex()+1);
+    dataIndex++;
+    dataSource.add(item);
   }
 
 

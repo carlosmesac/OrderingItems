@@ -71,6 +71,10 @@ public class ItemListPresenter implements ItemListContract.Presenter {
     // Log.e(TAG, "onButtonTapped()");
 
     //TODO: falta implementacion
+    model.onAddNewData();
+    state.dataIndex = model.getStoredIndex();
+    state.dataSource = model.getStoredDataSource();
+    view.get().onDataUpdated(state);
   }
 
   @Override
