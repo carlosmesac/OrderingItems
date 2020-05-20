@@ -55,9 +55,14 @@ public class ItemListModel implements ItemListContract.Model {
   @Override
   public void onDataFromNextScreen(ItemData data, Integer clicks) {
     // Log.e(TAG, "onDataFromNextScreen()");
+    for (int i = 0;i<clicks;i++){
 
-    //TODO: falta implementacion
-
+      if(data.position==dataSource.size()-1){
+        data.position=0;
+      }else if(data.position<dataSource.size()-1){
+        data.position++;
+      }
+    }
   }
 
 }

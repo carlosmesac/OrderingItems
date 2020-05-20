@@ -38,6 +38,10 @@ public class ItemDetailModel implements ItemDetailContract.Model {
   @Override
   public void onIncrPosition() {
 
-    //TODO: falta implementacion
+    if(data.position==listSize-1){
+      data.position=0;
+    }else if(data.position<listSize-1){
+      data.position++;
+    }
   }
 }

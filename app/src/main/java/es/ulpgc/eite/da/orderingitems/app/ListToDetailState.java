@@ -8,8 +8,11 @@ public class ListToDetailState {
 
     public ItemData data;
 
-    public ListToDetailState(ItemData data) {
+    public Integer size;
+
+    public ListToDetailState(ItemData data,Integer size) {
         this.data = data;
+        this.size = size;
     }
 
     @Override

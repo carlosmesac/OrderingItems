@@ -23,8 +23,6 @@ public class ItemDetailRouter implements ItemDetailContract.Router {
 
   @Override
   public ListToDetailState getStateFromPreviousScreen() {
-
-
     return mediator.getListToDetailState();
   }
 

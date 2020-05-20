@@ -16,7 +16,6 @@ public class ItemListRouter implements ItemListContract.Router {
 
   @Override
   public DetailToListState getStateFromNextScreen() {
-    //TODO: falta implementacion
     return mediator.getDetailToListState();
   }
 

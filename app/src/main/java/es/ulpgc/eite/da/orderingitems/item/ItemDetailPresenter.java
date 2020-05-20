@@ -2,6 +2,7 @@ package es.ulpgc.eite.da.orderingitems.item;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.orderingitems.app.DetailToListState;
 import es.ulpgc.eite.da.orderingitems.app.ListToDetailState;
 
 public class ItemDetailPresenter implements ItemDetailContract.Presenter {
@@ -29,6 +30,7 @@ public class ItemDetailPresenter implements ItemDetailContract.Presenter {
     ListToDetailState savedState = router.getStateFromPreviousScreen();
     if(savedState != null){
       state.data = savedState.data;
+      state.listSize = savedState.size;
     }
     view.get().onDataUpdated(state);
     state.numOfClicks=0;
@@ -39,13 +41,16 @@ public class ItemDetailPresenter implements ItemDetailContract.Presenter {
   public void onRestart() {
     // Log.e(TAG, "onRestart()");
 
-    //TODO: falta implementacion
+    model.onRestartScreen(state.data,state.listSize);
+
+    view.get().onDataUpdated(state);
   }
 
   @Override
   public void onResume() {
     // Log.e(TAG, "onResume()");
 
+    model.onDataFromPreviousScreen(state.data,state.listSize);
     //TODO: falta implementacion
   }
 
@@ -53,6 +58,8 @@ public class ItemDetailPresenter implements ItemDetailContract.Presenter {
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
 
+    DetailToListState detailToListState = new DetailToListState(state.numOfClicks,state.data);
+    router.passStateToPreviousScreen(detailToListState);
     //TODO: falta implementacion
   }
 
@@ -69,7 +76,10 @@ public class ItemDetailPresenter implements ItemDetailContract.Presenter {
   @Override
   public void onButtonTapped() {
     // Log.e(TAG, "onButtonTapped()");
-
+    model.onIncrPosition();
+    state.data =model.getStoredData();
+    state.numOfClicks++;
+    view.get().onDataUpdated(state);
     //TODO: falta implementacion
   }
 
