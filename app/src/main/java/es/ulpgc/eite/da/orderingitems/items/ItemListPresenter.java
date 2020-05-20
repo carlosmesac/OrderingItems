@@ -2,6 +2,7 @@ package es.ulpgc.eite.da.orderingitems.items;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.orderingitems.app.ListToDetailState;
 import es.ulpgc.eite.da.orderingitems.data.ItemData;
 
 public class ItemListPresenter implements ItemListContract.Presenter {
@@ -62,15 +63,15 @@ public class ItemListPresenter implements ItemListContract.Presenter {
   @Override
   public void onListTapped(ItemData data) {
     // Log.e(TAG, "onListTapped()");
-
-    //TODO: falta implementacion
+    ListToDetailState listToDetailState = new ListToDetailState(data);
+    router.passStateToNextScreen(listToDetailState);
+    view.get().navigateToNextScreen();
   }
 
   @Override
   public void onButtonTapped() {
     // Log.e(TAG, "onButtonTapped()");
 
-    //TODO: falta implementacion
     model.onAddNewData();
     state.dataIndex = model.getStoredIndex();
     state.dataSource = model.getStoredDataSource();
