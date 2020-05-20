@@ -2,6 +2,8 @@ package es.ulpgc.eite.da.orderingitems.item;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.orderingitems.app.ListToDetailState;
+
 public class ItemDetailPresenter implements ItemDetailContract.Presenter {
 
   public static String TAG = ItemDetailPresenter.class.getSimpleName();
@@ -24,9 +26,13 @@ public class ItemDetailPresenter implements ItemDetailContract.Presenter {
       state = new ItemDetailState();
     }
 
+    ListToDetailState savedState = router.getStateFromPreviousScreen();
+    if(savedState != null){
+      state.data = savedState.data;
+    }
+    view.get().onDataUpdated(state);
     state.numOfClicks=0;
 
-    //TODO: falta implementacion
   }
 
   @Override

@@ -17,12 +17,12 @@ public class ItemListRouter implements ItemListContract.Router {
   @Override
   public DetailToListState getStateFromNextScreen() {
     //TODO: falta implementacion
-    return null;
+    return mediator.getDetailToListState();
   }
 
   @Override
   public void passStateToNextScreen(ListToDetailState state) {
-    //TODO: falta implementacion
+    mediator.setListToDetailState(state);
   }
 
 
